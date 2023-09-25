@@ -1,7 +1,13 @@
 package com.saude.wemerson.saude.models;
 
+import jakarta.persistence.*;
+
+@Entity
+@Table(name = "especialidades")
 public class Especialidade {
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
     private String nome;
 
