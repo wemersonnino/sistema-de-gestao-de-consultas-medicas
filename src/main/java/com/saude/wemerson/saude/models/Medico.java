@@ -5,7 +5,7 @@ import java.util.List;
 
 public class Medico {
 
-    private int id;
+    private Integer id;
     private String nome;
     private Especialidade especialidade;
     private Integer crm;
