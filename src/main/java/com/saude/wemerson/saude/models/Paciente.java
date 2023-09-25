@@ -40,4 +40,10 @@ public class Paciente {
     public void setConsultas(List<Consulta> consultas) {
         this.consultas = consultas;
     }
+
+    public void informacoesPaciente(){
+        System.out.println("Nome do Paciente: " + getNome());
+        System.out.println("CPF do Paciente: " + getCpf());
+//        System.out.println("Consulta com: " + getConsultas());
+    }
 }

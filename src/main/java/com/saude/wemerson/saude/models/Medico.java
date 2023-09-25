@@ -7,15 +7,15 @@ public class Medico {
 
     private Integer id;
     private String nome;
-    private Especialidade especialidade;
+    private List<Especialidade> especialidades;
     private Integer crm;
     private List<Consulta> consultas;
 
-    public int getId() {
+    public Integer getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 
@@ -27,12 +27,12 @@ public class Medico {
         this.nome = nome;
     }
 
-    public Especialidade getEspecialidade() {
-        return especialidade;
+    public List<Especialidade> getEspecialidades() {
+        return especialidades;
     }
 
-    public void setEspecialidade(Especialidade especialidade) {
-        this.especialidade = especialidade;
+    public void setEspecialidades(List<Especialidade> especialidades) {
+        this.especialidades = especialidades;
     }
 
     public Integer getCrm() {
@@ -49,5 +49,11 @@ public class Medico {
 
     public void setConsultas(List<Consulta> consultas) {
         this.consultas = consultas;
+    }
+
+    public void informacoesMedico(){
+        System.out.println("Nome: " + this.getNome());
+        System.out.println("Especialidade: " + this.getEspecialidades());
+        System.out.println("CRM: " + this.getCrm());
     }
 }

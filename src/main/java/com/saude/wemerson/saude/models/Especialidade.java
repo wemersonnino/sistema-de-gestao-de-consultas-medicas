@@ -20,4 +20,8 @@ public class Especialidade {
     public void setNome(String nome) {
         this.nome = nome;
     }
+
+    public void informacoesEspecialidade(){
+        System.out.println("Nome da Especialidade: " + this.getNome());
+    }
 }
