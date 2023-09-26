@@ -26,26 +26,27 @@
                             <a class="nav-link active" aria-current="page" href="/">Home</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="#">Especialidades</a>
+                            <a class="nav-link" href="/especialidades">Especialidades</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="#">Medicos</a>
+                            <a class="nav-link" href="/medicos">Medicos</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="#">Pacientes</a>
+                            <a class="nav-link" href="/pacientes">Pacientes</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="#">Consultas</a>
+                            <a class="nav-link" href="/consultas/consultas">Consultas</a>
                         </li>
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                                 Serviços
                             </a>
                             <ul class="dropdown-menu">
-                                <li><a class="dropdown-item" href="medicos/novomedico">Cadastrar Novo Medico</a></li>
-                                <li><a class="dropdown-item" href="pacientes/novopaciente">Cadastrar Novo Paciente</a></li>
+                                <li><a class="dropdown-item" href="/medicos/novomedico">Cadastrar Novo Medico</a></li>
+                                <li><a class="dropdown-item" href="/pacientes/novopaciente">Cadastrar Novo Paciente</a></li>
+                                <li><a class="dropdown-item" href="/consultas/novaconsulta">Cadastrar Novo Consulta</a></li>
                                 <li><hr class="dropdown-divider"></li>
-                                <li><a class="dropdown-item" href="especialidades/novaespecialidade">Cadastrar Nova Especialidade</a></li>
+                                <li><a class="dropdown-item" href="/especialidades/novaespecialidade">Cadastrar Nova Especialidade</a></li>
                             </ul>
                         </li>
                     </ul>
@@ -64,10 +65,10 @@
         </div>
         <div class="mb-3">
             <div class="mb-3">
-                <label class="form-check-label" for="especialidadeMedico">Selecione a Consulta:</label>
-                <select class="form-select" aria-label="Default select example" th:field="*{especialidades}" id="especialidadeMedico">
-                    <option value="" selected>Selecione a Consulta</option>
-                    <option th:each="e : ${especialidades}" th:value="${e}" th:text="${e}"></option>
+                <label class="form-check-label" for="especialidadeMedico">Selecione a Especialidade:</label>
+                <select class="form-select" aria-label="Default select example" id="especialidadeMedico" th:field="*{especialidade}" required>
+                    <option value="" selected>Selecione a Especialidade</option>
+                    <option th:each="esp : ${especialidades}" th:selected="${esp==especialidades}" th:value="${esp.id}" th:text="${esp.nome}"></option>
                 </select>
             </div>
         </div>
@@ -79,7 +80,7 @@
             <label for="consultas" class="form-label">Consultas: </label>
             <select class="form-select" aria-label="Default select example" th:field="*{consultas}" id="consultas">
                 <option value="" selected>Selecione a consultas</option>
-                <option th:each="c : ${consultas}" th:value="${c}" th:text="${c}"></option>
+                <option th:each="c : ${consultas}" th:selected="${c==consultas}" th:value="${c.id}" th:text="${c.id}"></option>
             </select>
         </div>
 

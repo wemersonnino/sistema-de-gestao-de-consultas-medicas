@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css">
     <title>Atividade Avaliativa 03</title>
 </head>
 <body>
@@ -55,39 +55,34 @@
         </nav>
     </section>
 </header>
-<main class="d-flex flex-column container-fluid">
+<main class="d-flex flex-column">
     <section class="container">
-        <form action="#" th:action="@{/pacientes/salvar}" th:object="${paciente}" method="post">
-            <input type="hidden" th:field="*{id}">
-            <div class="mb-3">
-                <label for="nomePaciente" class="form-label">Nome do Paciente</label>
-                <input type="text" class="form-control" th:field="*{nome}" id="nomePaciente" aria-describedby="nomePacienteHelp">
-                <div id="nomePacienteHelp" class="form-text">We'll never share your email with anyone else.</div>
-            </div>
-            <div class="mb-3">
-                <label for="cpfPaciente" class="form-label">CPF:</label>
-                <input type="text" class="form-control" th:field="*{cpf}" id="cpfPaciente">
-            </div>
-            <div class="mb-3">
-                <label class="form-check-label" for="especialidades">Selecione a Especialidade:</label>
-                <select class="form-select" aria-label="Default select example" th:field="*{consultas}" id="especialidades">
-                    <option value="" selected>Selecione a Especialidade</option>
-                    <option th:each="e : ${especialidades}" th:selected="${e==consultas}" th:value="${e.id}" th:text="${e.nome}"></option>
-                </select>
-            </div>
-            <div class="mb-3">
-                <label class="form-check-label" for="consultasPaciente">Selecione a Consulta:</label>
-                <select class="form-select" aria-label="Default select example" th:field="*{consultas}" id="consultasPaciente">
-                    <option value="" selected>Selecione a Consulta</option>
-                    <option th:each="c : ${consultas}" th:selected="${c==consultas}" th:value="${c.id}" th:text="${c.id}"></option>
-                </select>
-            </div>
-            <button type="submit" class="btn btn-primary">Submit</button>
-        </form>
+        <table class="table table-striped table-hover">
+            <thead>
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">Nome da Especialidade</th>
+                <th scope="col">Especialidade</th>
+                <th scope="col">Ações</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="e : ${especialidades}">
+                <th th:text="${e.id}" scope="row"></th>
+                <td th:text="${e.nome}"></td>
+                <td>
+                    <a th:href="@{/especialidades/editar/{codigo} (codigo=${e.id})}">Editar</a>
+                </td>
+                <td>
+                    <a th:href="@{/especialidades/excluir/{codigo} (codigo=${e.id})}">Excluir</a>
+                </td>
+            </tr>
+            </tbody>
+        </table>
     </section>
 </main>
 
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </body>
 </html>

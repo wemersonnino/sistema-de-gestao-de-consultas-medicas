@@ -7,12 +7,13 @@ import java.util.List;
 @Entity
 @Table(name = "pacientes")
 public class Paciente {
-
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
     private String nome;
     private String cpf;
+
+    @OneToMany(mappedBy = "paciente")
     private List<Consulta> consultas;
 
     public Integer getId() {

@@ -12,9 +12,15 @@ public class Medico {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
+
     private String nome;
-    private List<Especialidade> especialidades;
+
+    @ManyToOne
+    private Especialidade especialidade;
+
     private Integer crm;
+
+    @OneToMany(mappedBy = "medico")
     private List<Consulta> consultas;
 
     public Integer getId() {
@@ -33,12 +39,12 @@ public class Medico {
         this.nome = nome;
     }
 
-    public List<Especialidade> getEspecialidades() {
-        return especialidades;
+    public Especialidade getEspecialidade() {
+        return especialidade;
     }
 
-    public void setEspecialidades(List<Especialidade> especialidades) {
-        this.especialidades = especialidades;
+    public void setEspecialidade(Especialidade especialidade) {
+        this.especialidade = especialidade;
     }
 
     public Integer getCrm() {
@@ -59,7 +65,9 @@ public class Medico {
 
     public void informacoesMedico(){
         System.out.println("Nome: " + this.getNome());
-        System.out.println("Especialidade: " + this.getEspecialidades());
+        System.out.println("Especialidade: " + this.getEspecialidade());
         System.out.println("CRM: " + this.getCrm());
+        System.out.println("Consultas: " + this.getConsultas());
     }
+
 }

@@ -1,35 +1,45 @@
 package com.saude.wemerson.saude.controllers;
 
+import com.saude.wemerson.saude.models.Consulta;
+import com.saude.wemerson.saude.models.Especialidade;
 import com.saude.wemerson.saude.models.Medico;
+import com.saude.wemerson.saude.services.ServiceConsulta;
+import com.saude.wemerson.saude.services.ServiceEspecialidade;
+import com.saude.wemerson.saude.services.ServiceMedico;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 @Controller
 @RequestMapping("/medicos")
 public class ControllerMedico {
 
+    @Autowired
+    private ServiceMedico serviceMedico;
+
+    @Autowired
+    private ServiceEspecialidade serviceEspecialidade;
+
+    @Autowired
+    private ServiceConsulta serviceConsulta;
+
+    @GetMapping("")
+    public String listAll(Model model){
+        model.addAttribute("medicos", serviceMedico.medicoList());
+        return "medicos/medicos";
+    }
+
+
     @GetMapping(value = "/novomedico")
     public String novoMedico(Model model) {
 
-        List<String> especialidades = new ArrayList<>();
-        especialidades.add("Clinico");
-        especialidades.add("Pediatra");
-        especialidades.add("Urologista");
-        especialidades.add("Pneumolologista");
-        especialidades.add("Ginecologista");
-
-        List<String> consultas = new ArrayList<>();
-        consultas.add("Maria");
-        consultas.add("Joao");
-        consultas.add("Sergio");
-        consultas.add("Paula");
+        List<Especialidade> especialidades = serviceEspecialidade.especialidadeList();
+        List<Consulta> consultas = serviceConsulta.consultaList();
 
         model.addAttribute("especialidades", especialidades);
         model.addAttribute("consultas", consultas);
@@ -39,9 +49,37 @@ public class ControllerMedico {
     }
 
     @PostMapping("/salvar")
-    public String salvar(@ModelAttribute Medico medico, Model model){
+    public String salvar(@ModelAttribute Medico medico){
         medico.informacoesMedico();
-        model.addAttribute("medico", new Medico());
+        serviceMedico.salvarMedico(medico);
+        return "redirect:/medicos/novomedico";
+    }
+
+    @GetMapping("/excluir/{codigo}")
+    public String excluirMedico(@PathVariable("codigo") int codigo){
+        Optional<Medico> optionalMedico = serviceMedico.getMedico(codigo);
+
+        if (optionalMedico.isPresent()){
+            serviceMedico.excluirMedico(optionalMedico.get());
+        }
+
+        return "redirect:/medicos";
+    }
+
+    @GetMapping("/editar/{codigo}")
+    public String editarMedico(@PathVariable("codigo") int codigo, Model model){
+
+        List<Especialidade> especialidades = serviceEspecialidade.especialidadeList();
+        List<Consulta> consultas = serviceConsulta.consultaList();
+
+        model.addAttribute("especialidades", especialidades);
+        model.addAttribute("especialidade", new Especialidade());
+        model.addAttribute("consultas", consultas);
+
+        Optional<Medico> optionalMedico = serviceMedico.getMedico(codigo);
+        model.addAttribute("medico", optionalMedico.get());
+
         return "medicos/novomedico";
     }
+
 }
