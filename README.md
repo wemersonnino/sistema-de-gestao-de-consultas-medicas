@@ -44,6 +44,8 @@ cd sistema-de-gestao-de-consultas-medicas
 mvn clean install
 mvn spring-boot:run
 ```
+Depois acesse o endereço para visualizar a aplicação no navegador:
+[localhost:8080](http://localhost:8080/)
 
 ## Contribuição:
 
