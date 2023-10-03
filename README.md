@@ -43,10 +43,10 @@ pacientes, especialidades médicas e consultas.
 ![Tela que exibe a lista de medicos cadastrados no sistema](https://github.com/wemersonnino/sistema-de-gestao-de-consultas-medicas/blob/main/src/main/resources/static/images/imgMedicos.png)
 
 * Tela que exibe uma lista dos pocientes cadastrados na clínica com quem eles têm ou terao consulta
-[Pacientes cadastrados na clínica](https://github.com/wemersonnino/sistema-de-gestao-de-consultas-medicas/blob/main/src/main/resources/static/images/imgPacientes.png)
+![Pacientes cadastrados na clínica](https://github.com/wemersonnino/sistema-de-gestao-de-consultas-medicas/blob/main/src/main/resources/static/images/imgPacientes.png)
 
 * Uma lista das consultas agendadas e as suas datas e horarios e outros dados
-[Lista de consultas agendadas na clínica](https://github.com/wemersonnino/sistema-de-gestao-de-consultas-medicas/blob/main/src/main/resources/static/images/imgPacientes.png)
+![Lista de consultas agendadas na clínica](https://github.com/wemersonnino/sistema-de-gestao-de-consultas-medicas/blob/main/src/main/resources/static/images/imgPacientes.png)
 
 * Menu com opções de serviços do sistema como cadastros
 ![Lista de opções suspensa no menu](https://github.com/wemersonnino/sistema-de-gestao-de-consultas-medicas/blob/main/src/main/resources/static/images/imgOpcoesCadastro.png)
