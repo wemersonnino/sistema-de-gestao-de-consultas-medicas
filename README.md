@@ -56,4 +56,4 @@ Sinta-se à vontade para contribuir com este projeto!
 Este projeto está licenciado sob a licença MIT.
 
 -------------------------------------------------------------
-Feito com muito ☕️ e ❤️ por Wemerson Nino
+Feito com muito ☕️ ❤️ e bastante empolgação por Wemerson Nino
