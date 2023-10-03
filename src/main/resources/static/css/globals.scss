@@ -1,0 +1,48 @@
+html{
+  box-sizing: border-box;
+}
+*,*:before, *:after{box-sizing: inherit}
+
+body{font: normal 16px/1.4 sans-serif; background-color: aliceblue}
+
+main{
+
+  .card{
+    img{
+      width: 100%;
+      height: 30vh;
+      max-height: 100%;
+    }
+  }
+  // Large devices (desktops, 992px and up)
+  @media (min-width: 992px) {
+    .card{
+      img{
+        width: 100%;
+        height: 36vh;
+        max-height: 36vh;
+        min-height: 36vh;
+      }
+    }
+  }
+}
+
+footer{
+  .footer-bottom {
+    position: relative;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    margin-top: 1rem;
+  }
+
+  @media (min-width: 992px) {
+    .footer-bottom {
+      position: fixed;
+      right: 0;
+      bottom: 0;
+      left: 0;
+      margin-top: 1rem;
+    }
+  }
+}

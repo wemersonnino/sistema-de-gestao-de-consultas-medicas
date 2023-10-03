@@ -1,16 +1,16 @@
-<header th:fragment="topo">
-    <!DOCTYPE html>
-    <html lang=¨pt-br¨ xmlns:th="http://www.thymeleaf.org">
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css">
-        <link rel="stylesheet" href="../static/css/globals.css" media="all">
-        <title>Atividade Avaliativa 03</title>
-    </head>
-    <body>
-    <header class="container-fluid d-flex flex-header">
-        <section class="d-flex flex-column mb-3 w-100">
+<!DOCTYPE html>
+<html lang="pt-br" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta th:fragment="metaUTF" charset="UTF-8">
+    <meta th:fragment="metaScale" name="viewport" content="width=device-width, initial-scale=1">
+    <link th:fragment="bootstrap" rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css">
+    <link th:fragment="css" rel="stylesheet" href="/css/globals.css" media="all">
+    <title th:fragment="title">Atividade Avaliativa 03</title>
+</head>
+<body>
+<header th:fragment="header">
+    <section class="container-fluid d-flex flex-header">
+        <div class="d-flex flex-column mb-3 w-100">
             <nav class="navbar navbar-expand-lg bg-body-tertiary">
                 <div class="container-fluid">
                     <a class="navbar-brand" href="/">
@@ -55,6 +55,28 @@
                     </div>
                 </div>
             </nav>
-        </section>
-    </header>
+        </div>
+    </section>
 </header>
+
+<!-- Conteúdo específico de cada página -->
+<div th:replace="~{content :: content}"></div>
+
+<footer th:fragment="footer" class="position-relative">
+    <section class="footer-bottom">
+        <div class="card">
+            <div class="card-header">
+                Java Spring Cadastro Medico/Paciente
+            </div>
+            <div class="card-body">
+                <blockquote class="blockquote mb-0">
+                    <p>Feito com &#10084; e muita empolgação</p>
+                    <footer class="blockquote-footer">Wemerson Nino <cite title="Source Title">Faculdade Cotemig - ADS</cite></footer>
+                </blockquote>
+            </div>
+        </div>
+    </section>
+</footer>
+<script th:fragment="bundle" src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

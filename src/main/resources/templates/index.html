@@ -1,10 +1,82 @@
-<div th:insert="header :: topo"></div>
+<!DOCTYPE html>
+<html lang="pt-br" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta th:replace="layout :: metaUTF"/>
+    <meta th:replace="layout :: metaScale"/>
+    <link th:replace="layout :: bootstrap"/>
+    <link th:replace="layout :: css"/>
+    <title th:replace="layout :: title">Atividade Avaliativa 03</title>
+</head>
+<body>
+<div th:replace="layout :: header"></div>
 
 <main class="d-flex flex-column">
-    <section class="container">
-        <h1>Projeto Java Spring Cadastro Medico Paciente</h1>
+    <section class="container-fluid">
+        <header class="text-center">
+            <h1>Sistema de Gestão de Consultas Médicas</h1>
+            <h3 class="fs-6 text">
+                Este projeto é um sistema de gestão de consultas médicas que permite cadastrar médicos, pacientes, especialidades médicas e consultas.
+            </h3>
+        </header>
+        <main class="mt-5">
+            <div class="row row-cols-1 row-cols-md-2 g-4">
+                <div class="col">
+                    <div class="card">
+                        <img src="/images/consultorio_medico.jpeg" class="card-img-top" alt="Marcar Consulta">
+                        <div class="card-body">
+                            <h5 class="card-title">Marcar Consulta</h5>
+                            <p class="card-text">
+                                É muita praticidade e conveniência que contribuirão para que os pacientes se decidam
+                                pela marcação da consulta.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="card">
+                        <img src="/images/especialidade_medica.png" class="card-img-top" alt="especialidade medica">
+                        <div class="card-body">
+                            <h5 class="card-title">Especialidade Medica</h5>
+                            <p class="card-text">
+                                O corpo humano é muito complexo e por causa disso, a Medicina se dividiu em diversas
+                                áreas, conhecidas como especialidades.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="card">
+                        <img src="/images/paciente.png" class="card-img-top" alt="paciente medico">
+                        <div class="card-body">
+                            <h5 class="card-title">Pacientes</h5>
+                            <p class="card-text">
+                                A relação médico-paciente está em voga. É voz corrente na área de Saúde que, com toda
+                                a certeza, é preciso estreitar os laços entre as duas pontas para haver adesão ao
+                                tratamento prescrito pelo profissional.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="card">
+                        <img src="/images/especialidade.png" class="card-img-top" alt="...">
+                        <div class="card-body">
+                            <h5 class="card-title">Medico</h5>
+                            <p class="card-text">
+                                Os médicos sabem que para cada uma dessas 4 especialidades, existem subespecialidades
+                                incríveis e que é agora que são totalmente aproveitadas na Telemedicina como áreas
+                                de diagnóstico
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
     </section>
 </main>
 
-<div th:insert="footer :: rodape"></div>
+<div th:replace="layout :: footer"></div>
+<script th:replace="layout :: bundle"></script>
+</body>
+</html>
 
