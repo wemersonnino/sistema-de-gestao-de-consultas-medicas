@@ -19,7 +19,7 @@
                 <th scope="col">Nome</th>
                 <th scope="col">Especialidade</th>
                 <th scope="col">CRM</th>
-                <th scope="col">Consultas</th>
+                <th scope="col">Consultas Pacientes</th>
                 <th scope="col">Ações</th>
             </tr>
             </thead>
@@ -30,19 +30,28 @@
                 <td th:text="${m.especialidade.nome}"></td>
                 <td th:text="${m.crm}"></td>
                 <td>
-                    <ul th:each="c : ${consultas}">
-                        <li th:text="${c.paciente.nome}"></li>
+                    <ul class="list-group list-group-flush">
+                        <li class="list-group-item" th:each="consulta : ${m.consultas}">
+                            <span class="fw-medium">
+                                Nome: <span class="text-center fw-light"
+                                              th:text="${consulta.paciente.nome}"></span>
+                            </span>
+                            <span class="fw-medium">
+                                - Data: <span class="text-center fw-light"
+                                            th:text="${#dates.format(consulta.data, 'dd/MM/yy')}"></span>
+                            </span>
+                        </li>
                     </ul>
                 </td>
                 <td>
                     <a th:href="@{/medicos/editar/{codigo} (codigo=${m.id})}">Editar</a>
-                </td>
-                <td>
                     <a th:href="@{/medicos/excluir/{codigo} (codigo=${m.id})}">Excluir</a>
                 </td>
             </tr>
             </tbody>
         </table>
+
+
     </section>
 </main>
 <div th:replace="layout :: footer"></div>

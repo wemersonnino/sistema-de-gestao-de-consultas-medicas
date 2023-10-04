@@ -1,5 +1,6 @@
 package com.saude.wemerson.saude.models;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.*;
 import org.springframework.format.annotation.DateTimeFormat;
 
@@ -15,10 +16,12 @@ public class Consulta {
 
     @ManyToOne
     @JoinColumn(name = "medico_id", nullable = false)
+    @JsonBackReference
     private Medico medico;
 
     @ManyToOne
     @JoinColumn(name = "paciente_id", nullable = false)
+    @JsonBackReference
     private Paciente paciente;
 
     private String convenio;

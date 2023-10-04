@@ -1,15 +1,11 @@
 package com.saude.wemerson.saude.controllers;
 
 import com.saude.wemerson.saude.models.Consulta;
-import com.saude.wemerson.saude.models.Especialidade;
-import com.saude.wemerson.saude.models.Medico;
-import com.saude.wemerson.saude.models.Paciente;
 import com.saude.wemerson.saude.services.ServiceConsulta;
 import com.saude.wemerson.saude.services.ServiceEspecialidade;
 import com.saude.wemerson.saude.services.ServiceMedico;
 import com.saude.wemerson.saude.services.ServicePaciente;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -45,7 +41,7 @@ public class ControllerConsulta {
     @PostMapping("/salvar")
     public String salvarConsulta(@ModelAttribute Consulta consulta){
         serviceConsulta.salvarConsulta(consulta);
-        return "redirect:/consultas/novaconsulta";
+        return "redirect:/consultas/consultas";
     }
 
 

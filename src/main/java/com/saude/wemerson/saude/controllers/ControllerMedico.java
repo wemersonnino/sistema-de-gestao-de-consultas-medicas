@@ -3,6 +3,7 @@ package com.saude.wemerson.saude.controllers;
 import com.saude.wemerson.saude.models.Consulta;
 import com.saude.wemerson.saude.models.Especialidade;
 import com.saude.wemerson.saude.models.Medico;
+import com.saude.wemerson.saude.models.Paciente;
 import com.saude.wemerson.saude.services.ServiceConsulta;
 import com.saude.wemerson.saude.services.ServiceEspecialidade;
 import com.saude.wemerson.saude.services.ServiceMedico;
@@ -45,7 +46,7 @@ public class ControllerMedico {
         model.addAttribute("consultas", consultas);
         model.addAttribute("medico", new Medico());
 
-        return "medicos/novomedico";
+        return "redirect:/medicos";
     }
 
     @PostMapping("/salvar")
@@ -59,9 +60,7 @@ public class ControllerMedico {
     public String excluirMedico(@PathVariable("codigo") int codigo){
         Optional<Medico> optionalMedico = serviceMedico.getMedico(codigo);
 
-        if (optionalMedico.isPresent()){
-            serviceMedico.excluirMedico(optionalMedico.get());
-        }
+        optionalMedico.ifPresent(medico -> serviceMedico.excluirMedico(medico));
 
         return "redirect:/medicos";
     }
@@ -70,16 +69,28 @@ public class ControllerMedico {
     public String editarMedico(@PathVariable("codigo") int codigo, Model model){
 
         List<Especialidade> especialidades = serviceEspecialidade.especialidadeList();
-        List<Consulta> consultas = serviceConsulta.consultaList();
-
-        model.addAttribute("especialidades", especialidades);
-        model.addAttribute("especialidade", new Especialidade());
-        model.addAttribute("consultas", consultas);
 
         Optional<Medico> optionalMedico = serviceMedico.getMedico(codigo);
-        model.addAttribute("medico", optionalMedico.get());
 
-        return "medicos/novomedico";
+        if (optionalMedico.isPresent()) {
+            Medico medico = optionalMedico.get();
+            List<Paciente> pacientes = new ArrayList<>();
+
+            for (Consulta consulta : medico.getConsultas()) {
+                pacientes.add(consulta.getPaciente());
+            }
+
+            model.addAttribute("especialidades", especialidades);
+            model.addAttribute("especialidade", new Especialidade());
+            model.addAttribute("consultas", medico.getConsultas());
+            model.addAttribute("pacientes", pacientes);
+            model.addAttribute("medico", medico);
+
+            return "medicos/novomedico";
+        } else {
+            model.addAttribute("mensagemErro", "Médico não encontrado");
+            return "redirect:/medicos";
+        }
     }
 
 }

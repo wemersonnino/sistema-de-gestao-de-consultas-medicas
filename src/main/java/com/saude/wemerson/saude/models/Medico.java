@@ -1,6 +1,7 @@
 package com.saude.wemerson.saude.models;
 
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 
 import java.util.List;
@@ -21,6 +22,7 @@ public class Medico {
     private Integer crm;
 
     @OneToMany(mappedBy = "medico")
+    @JsonManagedReference
     private List<Consulta> consultas;
 
     public Integer getId() {
