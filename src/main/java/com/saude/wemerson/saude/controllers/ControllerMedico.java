@@ -46,7 +46,7 @@ public class ControllerMedico {
         model.addAttribute("consultas", consultas);
         model.addAttribute("medico", new Medico());
 
-        return "redirect:/medicos";
+        return "/medicos/novomedico";
     }
 
     @PostMapping("/salvar")
